@@ -12,6 +12,7 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  list-style: none;
 }
 
 :root {
@@ -47,6 +48,7 @@ button {
 h1 {
   font-size: 2rem;
   margin-block-end: var(--spacing);
+  text-align: center;
 }
 
 h2 {
@@ -62,5 +64,19 @@ main {
   padding-inline: var(--spacing);
   max-width: var(--max-width);
 }
+
+form{
+  text-align: center;
+}
+
+.result {
+display: grid;
+margin-bottom: 1rem;
+}
+
+.result:nth-child(odd){
+  background-color: #d3d3d3;
+}
+
 
 /* TODO nánari stílar */

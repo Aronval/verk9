@@ -52,3 +52,14 @@ window.onpopstate = () => {
 
 // Athugum í byrjun hvað eigi að birta.
 route();
+
+const params = new URLSearchParams (window.location.search)
+const query = params.get('query')
+
+
+if (query) {
+  renderFrontpage;
+} 
+else {
+  renderDetails;
+}

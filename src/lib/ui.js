@@ -95,6 +95,7 @@ function createSearchResults(results, query) {
     const resultElement = el(
       'li',
       { class: 'result' },
+      el('a', { href: `/?id=${result.id}` }, result.name),
       el('span', { class: 'name' }, result.name),
       el('span', { class: 'mission' }, result.mission)
     );
@@ -161,20 +162,25 @@ export function renderFrontpage(
 
   searchAndRender(parentElement, searchForm, query);
 }
-
+ 
 /**
  * Sýna geimskot.
  * @param {HTMLElement} parentElement Element sem á að innihalda geimskot.
  * @param {string} id Auðkenni geimskots.
  */
 export async function renderDetails(parentElement, id) {
+  console.log("id "+ id);
   const container = el('main', {});
   const backElement = el(
     'div',
     { class: 'back' },
     el('a', { href: '/' }, 'Til baka')
   );
-
+    console.log("id testeroni: "+id);
+  setLoading(container);
+  const result = await getLaunch(id);
+  setNotLoading(container);
+  console.log(result);
   parentElement.appendChild(container);
 
   /* TODO setja loading state og sækja gögn */
