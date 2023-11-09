@@ -97,7 +97,7 @@ function createSearchResults(results, query) {
       { class: 'result' },
       el('a', { href: `/?id=${result.id}` }, result.name),
       el('p', { class: 'result_status' },`🚀 ${result.status.name}`),
-      el('span', { class: 'result_name' }, el (`span`, {class: `geimferð`}, `Geimferð`), ` ${result.mission}`)
+      el('p', { class: 'result_name' }, el ('span', {class: 'geimferð'}, 'Geimferð'), ` ${result.mission}`)
     );
 
     list.appendChild(resultElement);
@@ -169,23 +169,21 @@ export function renderFrontpage(
  * @param {string} id Auðkenni geimskots.
  */
 export async function renderDetails(parentElement, id) {
-  console.log("id "+ id);
   const container = el('main', {});
   const backElement = el('div',
     { class: 'back' },
     el('a', { href: '/' }, 'Til baka')
   );
-    console.log("id testeroni: "+id);
   setLoading(container);
   const result = await getLaunch(id);
   setNotLoading(container);
-  console.log(result);
   parentElement.appendChild(container);
   parentElement.appendChild(backElement);
 
   /* TODO setja loading state og sækja gögn */
+  
   if (!result) {
-    console.warn(`fann ekki result`)
+    console.warn('fann ekki result')
     return;
   }
 

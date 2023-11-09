@@ -61,10 +61,6 @@ export async function searchLaunches(query) {
     console.error('Villa við að vinna úr JSON');
     return null;
   }
-  console.log(json);
-
-  console.log(json.results);
-
   return json.results;
 }
 
@@ -83,11 +79,9 @@ export async function getLaunch(id) {
     console.error('Villa kom upp við að sækja gögn');
     return null;
   }
-  console.log(response);
   if (!response.ok) {
     console.error(
       'Villa við að sækja gögn, ekki 200 staða',
-      response.status,
       response.statusText
     );
     return null;

@@ -1,4 +1,3 @@
-import { empty } from './lib/elements.js';
 import { renderDetails, renderFrontpage, searchAndRender } from './lib/ui.js';
 
 /**
@@ -52,14 +51,3 @@ window.onpopstate = () => {
 
 // Athugum í byrjun hvað eigi að birta.
 route();
-
-const params = new URLSearchParams (window.location.search)
-const query = params.get('query')
-
-
-if (query) {
-  renderFrontpage;
-} 
-else {
-  renderDetails;
-}
