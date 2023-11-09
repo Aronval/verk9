@@ -101,6 +101,7 @@ export async function getLaunch(id) {
     return null;
   }
 
-  return json.results;
+  return json;
+  
   /* TODO útfæra */
 }

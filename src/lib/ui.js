@@ -96,8 +96,8 @@ function createSearchResults(results, query) {
       'li',
       { class: 'result' },
       el('a', { href: `/?id=${result.id}` }, result.name),
-      el('span', { class: 'name' }, result.name),
-      el('span', { class: 'mission' }, result.mission)
+      el('p', { class: 'result_status' },`🚀 ${result.status.name}`),
+      el('span', { class: 'result_name' }, el (`span`, {class: `geimferð`}, `Geimferð`), ` ${result.mission}`)
     );
 
     list.appendChild(resultElement);
@@ -171,8 +171,7 @@ export function renderFrontpage(
 export async function renderDetails(parentElement, id) {
   console.log("id "+ id);
   const container = el('main', {});
-  const backElement = el(
-    'div',
+  const backElement = el('div',
     { class: 'back' },
     el('a', { href: '/' }, 'Til baka')
   );
@@ -182,14 +181,48 @@ export async function renderDetails(parentElement, id) {
   setNotLoading(container);
   console.log(result);
   parentElement.appendChild(container);
+  parentElement.appendChild(backElement);
 
   /* TODO setja loading state og sækja gögn */
+  if (!result) {
+    console.warn(`fann ekki result`)
+    return;
+  }
 
+const launchElement = el(
+  'article', 
+  { class: 'launch' },
+  el(
+    'section',
+  { class : 'info' },
+  el('h1', {}, result.name),
+  el(
+    'div',
+    { class: 'window'},
+    el('p', {}, `Gluggi opnast: ${result.window_start}`),
+    el('p', {}, `Gluggi lokast: ${result.window_end}`),
+  ),
+  el(
+    'div',
+    { class: 'status'},
+    el('h2', {}, `Staða: ${result.status.name}`),
+    el('p', {}, result.status.description),
+  ),
+el(
+  'div',
+  { class: 'mission' },
+  el('h2', {}, `Geimferð: ${result.mission.name}`),
+  el('p', {}, result.mission.description),
+  ),
+),
+el('div', { class: 'image' }, el('img', {src: result.image, alt: ''})),  
+backElement,
+);
+
+container.appendChild(launchElement);
   // Tómt og villu state, við gerum ekki greinarmun á þessu tvennu, ef við
   // myndum vilja gera það þyrftum við að skilgreina stöðu fyrir niðurstöðu
-  if (!result) {
-    /* TODO útfæra villu og tómt state */
-  }
+
 
   /* TODO útfæra ef gögn */
 }

@@ -25,6 +25,7 @@ html {
 
 img {
   max-width: 100%;
+  padding-top: var(--spacing);
 }
 
 html {
@@ -53,6 +54,7 @@ h1 {
 
 h2 {
   font-size: 1.5rem;
+  padding-top: var(--spacing);
 }
 
 main {
@@ -63,6 +65,7 @@ main {
   margin: var(--spacing) auto;
   padding-inline: var(--spacing);
   max-width: var(--max-width);
+  
 }
 
 form{
@@ -71,12 +74,13 @@ form{
 
 .result {
 display: grid;
-margin-bottom: 1rem;
+padding-inline: calc(var(--spacing) / 2);
 }
 
 .result:nth-child(odd){
   background-color: #d3d3d3;
 }
+
 
 
 /* TODO nánari stílar */
